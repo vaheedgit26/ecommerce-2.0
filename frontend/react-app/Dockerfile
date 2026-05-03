@@ -3,6 +3,14 @@ FROM node:18-alpine as build
 
 WORKDIR /app
 
+# ✅ Declare build arguments
+ARG USER_POOL_ID
+ARG CLIENT_ID
+
+# ✅ Convert them to env (so React can use them)
+ENV REACT_APP_USER_POOL_ID=$USER_POOL_ID
+ENV REACT_APP_CLIENT_ID=$CLIENT_ID
+
 COPY package*.json ./
 RUN npm install
 
@@ -48,3 +56,12 @@ CMD ["nginx", "-g", "daemon off;"]
 # RUN rm -f /etc/nginx/conf.d/default.conf
 # COPY nginx.conf /etc/nginx/nginx.conf
 # COPY static /usr/share/nginx/html/
+
+# docker build \
+#  --build-arg USER_POOL_ID=your_pool_id \
+#  --build-arg CLIENT_ID=your_client_id \
+#  -t your-image .
+
+
+
+
