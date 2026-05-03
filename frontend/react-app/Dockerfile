@@ -60,6 +60,7 @@ CMD ["nginx", "-g", "daemon off;"]
 # docker build \
 #  --build-arg USER_POOL_ID=your_pool_id \
 #  --build-arg CLIENT_ID=your_client_id \
+#  --build-arg API_BASE_URL=your_api_base_url \
 #  -t your-image .
 
 
