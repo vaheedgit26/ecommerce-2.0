@@ -6,10 +6,12 @@ WORKDIR /app
 # ✅ Declare build arguments
 ARG USER_POOL_ID
 ARG CLIENT_ID
+ARG API_BASE_URL
 
 # ✅ Convert them to env (so React can use them)
 ENV REACT_APP_USER_POOL_ID=$USER_POOL_ID
 ENV REACT_APP_CLIENT_ID=$CLIENT_ID
+ENV REACT_APP_API_BASE_URL=$API_BASE_URL
 
 COPY package*.json ./
 RUN npm install
